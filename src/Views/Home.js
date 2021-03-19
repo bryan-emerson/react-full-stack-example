@@ -1,4 +1,6 @@
 import React from 'react'
+import Container from '../Components/Container'
+
 //Component Imports
 export default class HomeView extends React.Component {
     constructor(props) {
@@ -24,6 +26,6 @@ export default class HomeView extends React.Component {
         //will only run if a component is about to be removed from the dom by React
     }
     render() {
-        return (<div>HOME PAGE CONTENT</div>)
+        return (<Container></Container>)
     }
 }

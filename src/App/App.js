@@ -27,7 +27,9 @@ export default class App extends React.Component {
     this.state = {
       users,
       posts,
-      openMenu: ""
+      openMenu: "",
+      detailCard: {},
+      detailId: null
     }
   }
 
@@ -40,7 +42,10 @@ export default class App extends React.Component {
   componentWillUnmount() {
   }
   handleDropdownToggle = (openMenu) => this.setState({ openMenu: this.state.openMenu === openMenu ? "" : openMenu });
-
+  handleSetDetailCard = (id) => {
+    console.log(id, 'inside app')
+    this.setState({detailId: id})
+  }
   render() {
     return (<div className="App">
       <Navigation>
@@ -51,19 +56,18 @@ export default class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => {
-              return <Home/>;
-            }}
+            render={() => <Home/>
+            }
           />
           <Route
             exact
             path="/posts/:id"
-            component={Detail}
+            render={routerProps => <Detail detailId={this.state.detailId} {...routerProps}/>}
           />
           <Route
             exact
             path="/posts/"
-            component={DataIndex}
+            render={routerProps => <DataIndex setDetailCard={this.handleSetDetailCard} {...routerProps}/>}
           />
           <Route
             path="*"

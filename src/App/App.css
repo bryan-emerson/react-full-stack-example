@@ -91,3 +91,36 @@ header{
 .link-list--nav-dropdown{
   font-size: 21px;
 }
+
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+  
+}
+.container > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 90px 60px 110px 60px;
+}
+
+.container > div.card-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 90px 60px 110px 60px;
+}
+.card {
+  width: 100%;
+  padding: 1em;
+  height: auto;
+  border: 1px solid black;
+}

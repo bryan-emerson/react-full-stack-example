@@ -1,10 +1,13 @@
 import React from 'react'
+import Container from '../Components/Container'
+import {Link} from 'react-router-dom'
+const users = require('../data/users.json')
 //Component Imports
 export default class DataIndex extends React.Component {
     constructor(props) {
         super()
         this.state = {
-            yourState: []
+            users: []
         }
     }
     //Helper Methods go here:
@@ -12,18 +15,32 @@ export default class DataIndex extends React.Component {
     // - methods that update state
     // - validation 
     
-    componentDidMount() {
-        //wll run immmediately after render processes (including all mounting for child components) is complete
-        let newData = []
-        this.setState({ yourState: newData })
+    handleGetCards = (data) => {
+        return (data && data?.map(d => (
+            <div key={d.id}className="card" onClick={()=>{
+                console.log(d.id)
+                this.props.setDetailCard(d.id)
+                }}>
+                <h3>{d.name}</h3>
+                <Link to={"/posts/"+d.id}>Learn More: {d.username}</Link>
+            </div>)))
     }
-    componentDidUpdate() {
-        //will only run if a component is React detects a change in the state for this component or props from parent
-    }
-    componentWillUnmount() {
-        //will only run if a component is about to be removed from the dom by React
-    }
-    render() {
-        return (<div>DATA INDEX CONTENT</div>)
-    }
+
+handleUsersFetch = (data) => {
+    let newData = [...data]
+    //make fetch call here 
+    //run setState inside of then() return from DB fetch
+    this.setState({ users: newData })
+}
+componentDidMount() {
+    this.handleUsersFetch(users)
+}
+componentDidUpdate() {
+}
+componentWillUnmount() {
+}
+render() {
+    const cards = this.handleGetCards(this.state.users)
+    return (<Container><div className="card-list">{cards}</div></Container>)
+}
 }
