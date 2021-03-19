@@ -37,11 +37,15 @@ export default class App extends React.Component {
     let newData = []
     this.setState({ yourState: newData })
   }
-  componentDidUpdate() {
-  }
-  componentWillUnmount() {
-  }
+
+  // componentDidUpdate() {
+  // }
+
+  // componentWillUnmount() {
+  // }
+
   handleDropdownToggle = (openMenu) => this.setState({ openMenu: this.state.openMenu === openMenu ? "" : openMenu });
+
   handleSetDetailCard = (id) => {
     console.log(id, 'inside app')
     this.setState({detailId: id})

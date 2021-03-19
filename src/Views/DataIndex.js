@@ -26,11 +26,23 @@ export default class DataIndex extends React.Component {
             </div>)))
     }
 
-handleUsersFetch = (data) => {
-    let newData = [...data]
+handleUsersFetch = () => {
+
+    fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'GET', // or 'PUT'
+    })
+    .then(response => response.json())
+    .then(userData => {
+      console.log('Success:', userData);
+      this.setState({ users: userData })
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+    
     //make fetch call here 
     //run setState inside of then() return from DB fetch
-    this.setState({ users: newData })
+    
 }
 componentDidMount() {
     this.handleUsersFetch(users)
