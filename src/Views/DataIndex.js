@@ -40,9 +40,6 @@ handleUsersFetch = () => {
       console.error('Error:', error);
     });
     
-    //make fetch call here 
-    //run setState inside of then() return from DB fetch
-    
 }
 componentDidMount() {
     this.handleUsersFetch(users)

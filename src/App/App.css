@@ -124,3 +124,10 @@ header{
   height: auto;
   border: 1px solid black;
 }
+
+.user-card {
+  display: block;
+  padding: 2em; 
+  border: 1px solid black;
+  margin: .5em;
+}
