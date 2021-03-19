@@ -43,10 +43,8 @@ export default class DetailView extends React.Component {
         this.handleUserFetch(userId)
     }
     componentDidUpdate() {
-        console.log(this.props.detailId)
         const userId = parseInt(this.props.detailId)
         const param = parseInt(this.props.match.params.id)
-        console.log(param, userId)
         const valid = !!userId ? true : false
         if(param !== this.state.user.id){
             this.handleUserFetch(param)
